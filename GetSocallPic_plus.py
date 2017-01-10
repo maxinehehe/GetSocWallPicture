@@ -7,12 +7,10 @@ from multiprocessing.dummy import Pool as ThreatPool
 
 # 该爬虫可以在Linux和Windows上使用
 
-
 url = 'http://www.socwall.com/wallpapers/page:1/'
 baseUrl = 'http://www.socwall.com/'
+
 # 幻夜
-
-
 def changePage(url):
     list = []
     global start
@@ -28,7 +26,6 @@ def changePage(url):
         page = re.sub('page:\d+', 'page:%s' % i, url)
         list.append(page)
     return list
-# 通过
 
 # 获取合格（赞大于等于0）
 
@@ -79,17 +76,10 @@ def saveImg(imgUrl, currentPage):
 
         print '开始下载' + each
         # urllib.urlretrieve(each,file_n+'\\Socall%s.jpg'%co)
-        # with closing(requests.get(self.url(), stream=True)) as response:
-        #     chunk_size = 1024  # 单次请求最大值
-        #     content_size = int(response.headers['content-length'])  # 内容体总大小
-        #     progress = ProgressBar(self.file_name(), total=content_size,
-        #                             unit="KB", chunk_size=chunk_size, run_status="正在下载", fin_status="下载完成")
         pic = requests.get(each)
         num = re.findall(r'wallpapers/(\d+.+\d).', each)[0]
         print num
         fn = file_n + r'soc%spic%s.jpg' % (start, num)
-        # co += 1
-        # fn_copy = file_n+'\\NR%spic%s' % (start, co)
         if not os.path.exists(fn):
             fp = open(fn, 'wb')
             fp.write(pic.content)
@@ -112,6 +102,7 @@ def getImgUrl(pages):
         saveImg(imgUrl, currentPage)
 
 if __name__ == '__main__':
+    # 多线程
     # pool = ThreatPool(4)
     # pages = changePage(url)
     # pool.map(getImgUrl, pages)
@@ -126,7 +117,6 @@ if __name__ == '__main__':
         quality = 'high'
     else:
         quality = 'low'
-
     getImgUrl(url)
     print '下载完毕'
     print r'文件下载至->',file_n
