@@ -1,7 +1,8 @@
 #GetSocWallPicture
 ## 通过简单的python知识 爬取 <a href="http://www.socwall.com">social wallpapering</a> 网站的图片
-【图片均为压缩290*260】
-
+【默认下载图片均为290*260】
+**GetSocallPic.py为初级版本只能下载290x260**
+**GetSocallPic_plus.py为升级版本可以选择下载，即可以下载高清版本**
 ## 使用
 **git https://github.com/maxinehehe/GetSocWallPicture.git** <br />
 **运行 GetSocWallPicture.py** <br />
