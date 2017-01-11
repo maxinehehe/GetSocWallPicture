@@ -11,5 +11,5 @@ from lxml import etree
 import platform
 ```
 **git clone https://github.com/maxinehehe/GetSocWallPicture.git** <br />
-**GetSocallPic.py或者 运行GetSocallPic_plus.py**<br />
+**运行GetSocallPic.py或者 运行GetSocallPic_plus.py**<br />
 **另外也可以通过pyinstaller.py工具打包成 .exe 文件运行**  <br />
