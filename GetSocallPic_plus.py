@@ -58,15 +58,30 @@ def getAvalue(url):
 # 获取图片 增加判断操作系统类型：：Linux OR Windows
 
 def saveImg(imgUrl, currentPage):
-    global file_n
+    global file_n 
     global quality
     file_n = 'SOCALL\\'  # windows
     file_linux = r'socwall/'  # linux
+    file_plus = r'plus'
+    file_ordinary = r'ordinary'
     print '操作系统：', platform.system()
     if platform.system() == 'Linux':
         file_n = file_linux
+        # 将高清图片和普通图片分开存储
+        if quality == 'high':    # 存储高清图片路径
+            file_n += file_plus + '/'
+        else:
+            file_n += file_ordinary + '/'  # 存储普通图片路径
+    else:
+        # 将高清图片和普通图片分开存储
+        if quality == 'high':    # 存储高清图片路径
+            file_n += file_plus + '\\'
+        else:
+            file_n += file_ordinary + '\\'  # 存储普通图片路径
     if not os.path.exists(file_n):
-        os.mkdir(file_n)
+        # os.mkdir(file_n)
+        os.makedirs(file_n)
+
     # co = 0
     start = currentPage
     print '品质-quality:', quality
