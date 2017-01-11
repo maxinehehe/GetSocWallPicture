@@ -93,12 +93,6 @@ def saveImg(imgUrl, currentPage):
             each = baseUrl + img2
 
         print '开始下载' + each
-        # urllib.urlretrieve(each,file_n+'\\Socall%s.jpg'%co)
-        # with closing(requests.get(self.url(), stream=True)) as response:
-        #     chunk_size = 1024  # 单次请求最大值
-        #     content_size = int(response.headers['content-length'])  # 内容体总大小
-        #     progress = ProgressBar(self.file_name(), total=content_size,
-        #                             unit="KB", chunk_size=chunk_size, run_status="正在下载", fin_status="下载完成")
         pic = requests.get(each)
         num = re.findall(r'wallpapers/(\d+.+\d).', each)[0]
         print num
